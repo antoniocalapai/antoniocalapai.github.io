@@ -10,6 +10,28 @@
   />
   <link rel="stylesheet" href="styles.css" />
 </head>
+<script>
+function initCarousel(id) {
+  const carousel = document.getElementById(id);
+  const track = carousel.querySelector('.carousel-images');
+  const images = track.querySelectorAll('img');
+  let index = 0;
+
+  const update = () => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  };
+
+  carousel.querySelector('.prev').onclick = () => {
+    index = (index - 1 + images.length) % images.length;
+    update();
+  };
+
+  carousel.querySelector('.next').onclick = () => {
+    index = (index + 1) % images.length;
+    update();
+  };
+}
+</script>
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -133,7 +155,7 @@
             </ul>
           </div>
           <div class="card">
-            <h3>Data & Infrastructure</h3>
+            <h3>Data</h3>
             <ul>
               <li>End-to-end workflows</li>
               <li>GitHub / CI/CD</li>
@@ -142,14 +164,131 @@
             </ul>
           </div>
           <div class="card">
-            <h3>Hardware & Prototyping</h3>
+            <h3>Hardware</h3>
             <ul>
+              <li>Nvidia Jetson</li>
+              <li>Raspberry Pi</li>
+              <li>PCB basics</li>
+              <li>Microcontrollers</li>
               <li>CAD & 3D printing</li>
-              <li>Touchscreen device design (XBI)</li>
-              <li>Jetson / Raspberry Pi systems</li>
-              <li>PCB basics and embedded control</li>
+              <li>Touchscreens</li>
+
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section section-alt">
+      <div class="container section-inner">
+
+        <div class="section-header">
+          <h2>Portfolio</h2>
+          <p class="section-lead">
+            A selection of projects at the intersection of neuroscience, machine vision, and autonomous systems.
+          </p>
+        </div>
+
+        <div class="grid projects-grid">
+
+          <!-- ABT -->
+          <article class="card">
+            <h3>Autonomous Behavioural Tracking (ABT)</h3>
+
+            <div id="carousel-abt" class="carousel">
+              <div class="carousel-images">
+                <img src="assets/abt_1.jpg" alt="ABT image 1">
+                <img src="assets/abt_2.jpg" alt="ABT image 2">
+                <img src="assets/abt_3.jpg" alt="ABT image 3">
+              </div>
+              <button class="carousel-button prev">‹</button>
+              <button class="carousel-button next">›</button>
+            </div>
+
+            <p class="project-description">
+              Lead developer of a machine-vision platform for continuous, markerless tracking and
+              identification of rhesus macaques in large enclosures. The system combines synchronised
+              multi-camera acquisition, pose estimation, 3D triangulation, and automated behavioural
+              readouts.
+            </p>
+
+            <script>initCarousel("carousel-abt")</script>
+          </article>
+
+
+          <!-- XBI -->
+          <article class="card">
+            <h3>Touchscreens for Monkeys (XBI)</h3>
+
+            <div id="carousel-xbi" class="carousel">
+              <div class="carousel-images">
+                <img src="assets/xbi_1.jpg" alt="XBI image 1">
+                <img src="assets/xbi_2.jpg" alt="XBI image 2">
+                <img src="assets/xbi_3.jpg" alt="XBI image 3">
+              </div>
+              <button class="carousel-button prev">‹</button>
+              <button class="carousel-button next">›</button>
+            </div>
+
+            <p class="project-description">
+              Designed and deployed touchscreen-based Experimental Behavioral Instruments that
+              allow monkeys to train, perform psychophysics, and receive cognitive enrichment
+              directly from their home enclosure, significantly reducing stress and scaling
+              data collection.
+            </p>
+
+            <script>initCarousel("carousel-xbi")</script>
+          </article>
+
+
+          <!-- Machine Vision -->
+          <article class="card">
+            <h3>Machine Vision for Monkeys</h3>
+
+            <div id="carousel-vision" class="carousel">
+              <div class="carousel-images">
+                <img src="assets/vision_1.jpg" alt="Machine vision image 1">
+                <img src="assets/vision_2.jpg" alt="Machine vision image 2">
+                <img src="assets/vision_3.jpg" alt="Machine vision image 3">
+              </div>
+              <button class="carousel-button prev">‹</button>
+              <button class="carousel-button next">›</button>
+            </div>
+
+            <p class="project-description">
+              Developed CNNs for real-time individual identification, gaze tracking, and behaviour
+              extraction from video to support standardised yet individualised training and
+              enrichment protocols deployed across multiple facilities.
+            </p>
+
+            <script>initCarousel("carousel-vision")</script>
+          </article>
+
+
+          <!-- Gamified Psychophysics -->
+          <article class="card">
+            <h3>Gamified Psychophysics</h3>
+
+            <div id="carousel-psycho" class="carousel">
+              <div class="carousel-images">
+                <img src="assets/psycho_1.jpg" alt="Gamified psychophysics image 1">
+                <img src="assets/psycho_2.jpg" alt="Gamified psychophysics image 2">
+                <img src="assets/psycho_3.jpg" alt="Gamified psychophysics image 3">
+              </div>
+              <button class="carousel-button prev">‹</button>
+              <button class="carousel-button next">›</button>
+            </div>
+
+            <p class="project-description">
+              Created game-like experimental paradigms in 2D and 3D (e.g., joystick-based tasks in
+              Unreal Engine) to study motion processing, social information integration, and
+              cognitive flexibility in humans and non-human primates.
+            </p>
+
+            <script>initCarousel("carousel-psycho")</script>
+          </article>
+
         </div>
       </div>
     </section>
@@ -213,55 +352,6 @@
               Worked on multidimensional mapping of macaque visual cortex (area MST), eye movements
               and visual attention in humans, and early prototypes of cage-based autonomous
               touchscreens for monkeys.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section section-alt">
-      <div class="container section-inner">
-        <div class="section-header">
-          <h2>Selected Projects</h2>
-          <p class="section-lead">
-            A few representative projects at the intersection of neuroscience, machine vision,
-            and autonomous systems.
-          </p>
-        </div>
-        <div class="grid projects-grid">
-          <article class="card">
-            <h3>Autonomous Behavioural Tracking (ABT)</h3>
-            <p>
-              Lead developer of a machine-vision platform for continuous, markerless tracking and
-              identification of rhesus macaques in large enclosures. The system combines
-              synchronised multi-camera acquisition, pose estimation, 3D triangulation, and
-              automated behavioural readouts.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Touchscreens for Monkeys (XBI)</h3>
-            <p>
-              Designed and deployed touchscreen-based Experimental Behavioral Instruments that
-              allow monkeys to train, perform psychophysics, and receive cognitive enrichment
-              directly from their home enclosure, significantly reducing stress and scaling data
-              collection.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Machine Vision for Monkeys</h3>
-            <p>
-              Developed CNNs for real-time individual identification, gaze tracking, and behaviour
-              extraction from video to support standardised yet individualised training and
-              enrichment protocols deployed across multiple facilities.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Gamified Psychophysics</h3>
-            <p>
-              Created game-like experimental paradigms in 2D and 3D (e.g., joystick-based tasks in
-              Unreal Engine) to study motion processing, social information integration, and
-              cognitive flexibility in humans and non-human primates.
             </p>
           </article>
         </div>
