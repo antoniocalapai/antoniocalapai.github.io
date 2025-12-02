@@ -572,3 +572,31 @@ body {
 #about {
   margin-top: -4rem;
 }
+
+.skills-grid {
+  margin-bottom: 2.5rem;
+}
+
+.carousel {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 2rem auto;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+
+  /* 🔥 NEW: let the height adapt to the images */
+  height: auto;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.carousel-images img {
+  width: 100%;
+  height: auto;         /* important */
+  object-fit: contain;  /* prevents stretching */
+  display: block;
+}

@@ -9,10 +9,56 @@
     content="Dr. Antonino Calapai"
   />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Inline styles just for the project tabs; you can move these to styles.css later -->
+  <style>
+    .projects-shell {
+      margin-top: 2rem;
+    }
+
+    .project-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tab {
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    }
+
+    .project-tab:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .project-tab.active {
+      background: #ffd44b;
+      color: #0b1726;
+      font-weight: 600;
+    }
+
+    .project-panels .project-panel {
+      display: none;
+    }
+
+    .project-panels .project-panel.active {
+      display: block;
+    }
+  </style>
 </head>
+
 <script>
 function initCarousel(id) {
   const carousel = document.getElementById(id);
+  if (!carousel) return;
   const track = carousel.querySelector('.carousel-images');
   const images = track.querySelectorAll('img');
   let index = 0;
@@ -21,20 +67,28 @@ function initCarousel(id) {
     track.style.transform = `translateX(-${index * 100}%)`;
   };
 
-  carousel.querySelector('.prev').onclick = () => {
-    index = (index - 1 + images.length) % images.length;
-    update();
-  };
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
 
-  carousel.querySelector('.next').onclick = () => {
-    index = (index + 1) % images.length;
-    update();
-  };
+  if (prevBtn) {
+    prevBtn.onclick = () => {
+      index = (index - 1 + images.length) % images.length;
+      update();
+    };
+  }
+
+  if (nextBtn) {
+    nextBtn.onclick = () => {
+      index = (index + 1) % images.length;
+      update();
+    };
+  }
 }
 </script>
+
 <body>
 
-<!-- Header -->
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo">
@@ -64,7 +118,6 @@ function initCarousel(id) {
             My work aims to bridge experimental requirements with robust, maintainable software infrastructures.
           </p>
           <div class="hero-actions">
-            <!-- Update the CV link once your PDF is in the repo -->
             <a class="btn btn-primary" href="#projects">View Portfolio</a>
             <a class="btn btn-secondary" href="#contact">Contact me</a>
           </div>
@@ -120,63 +173,61 @@ function initCarousel(id) {
       </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills + Metrics -->
     <section id="skills" class="section section-alt">
-    <div class="container section-inner">
-      <div class="section-header">
-        <h2> Technical Skills </h2>
-        <p class="section-lead">
-          from embedded linux to front-end interfaces - for data science, machine vision, and advanced UX.
-        </p>
+      <div class="container section-inner">
+        <div class="section-header">
+          <h2> Technical Skills </h2>
+          <p class="section-lead">
+            from embedded linux to front-end interfaces - for data science, machine vision, and advanced UX.
+          </p>
+        </div>
+        <div class="grid skills-grid">
+          <div class="card">
+            <h3>Programming</h3>
+            <ul>
+              <li>Python</li>
+              <li>Matlab</li>
+              <li>Bash</li>
+              <li>C# / C++</li>
+              <li>R / SPSS</li>
+              <li>HTML</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Machine Vision</h3>
+            <ul>
+              <li>CUDA / MPS</li>
+              <li>OpenCV</li>
+              <li>TensorFlow</li>
+              <li>CNNs, Poses, Identities</li>
+              <li>Markerless 3D tracking</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Data</h3>
+            <ul>
+              <li>End-to-end workflows</li>
+              <li>GitHub / CI/CD</li>
+              <li>Docker & Ansible</li>
+              <li>GPU clusters</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Hardware</h3>
+            <ul>
+              <li>Nvidia Jetson</li>
+              <li>Raspberry Pi</li>
+              <li>PCB basics</li>
+              <li>Microcontrollers</li>
+              <li>CAD & 3D printing</li>
+              <li>Touchscreens</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="grid skills-grid">
-        <div class="card">
-          <h3>Programming</h3>
-          <ul>
-            <li>Python</li>
-            <li>Matlab</li>
-            <li>Bash</li>
-            <li>C# / C++</li>
-            <li>R / SPSS</li>
-            <li>HTML</li>
 
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Machine Vision</h3>
-          <ul>
-            <li>CUDA / MPS</li>
-            <li>OpenCV</li>
-            <li>TensorFlow</li>
-            <li>CNNs, Poses, Identities</li>
-            <li>Markerless 3D tracking</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Data</h3>
-          <ul>
-            <li>End-to-end workflows</li>
-            <li>GitHub / CI/CD</li>
-            <li>Docker & Ansible</li>
-            <li>GPU clusters</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Hardware</h3>
-          <ul>
-            <li>Nvidia Jetson</li>
-            <li>Raspberry Pi</li>
-            <li>PCB basics</li>
-            <li>Microcontrollers</li>
-            <li>CAD & 3D printing</li>
-            <li>Touchscreens</li>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Code Metrics -->
+      <!-- Code Metrics: wordcloud -->
       <div class="container section-inner">
         <div class="metrics-card"
              style="
@@ -199,63 +250,64 @@ function initCarousel(id) {
         </div>
       </div>
 
-    <!-- Wordcloud and stats -->
-    <div class="metrics-infographic container section-inner" style="margin-top: 2rem;">
+      <!-- Wordcloud and stats -->
+      <div class="metrics-infographic container section-inner" style="margin-top: 2rem;">
 
-      <div class="metrics-cards">
+        <div class="metrics-cards">
+          <div class="metrics-card">
+            <h4>Total Lines of Code</h4>
+            <p id="metric-loc" class="metric-number"></p>
+          </div>
 
-        <div class="metrics-card">
-          <h4>Total Lines of Code</h4>
-          <p id="metric-loc" class="metric-number"></p>
+          <div class="metrics-card">
+            <h4>Cyclomatic Complexity</h4>
+            <p id="metric-cc" class="metric-number"></p>
+          </div>
+
+          <div class="metrics-card">
+            <h4>Custom-made Definitions</h4>
+            <p id="metric-funcs" class="metric-number"></p>
+          </div>
+
+          <div class="metrics-card">
+            <h4>Comments Percentage</h4>
+            <p id="metric-comments" class="metric-number"></p>
+          </div>
         </div>
 
-        <div class="metrics-card">
-          <h4>Cyclomatic Complexity</h4>
-          <p id="metric-cc" class="metric-number"></p>
-        </div>
+        <p class="metrics-caption" style="
+          text-align:center;
+          color:#8FA3B8;
+          margin-top:0rem;
+          font-size:0.9rem;
+          max-width:700px;
+          margin-left:auto;
+          margin-right:auto;">
+          These <span style="color:#ffd44b;">Python-only metrics</span> summarize the size, complexity,
+          originality, and readability of my codebase. They are based on both curated and non-curated projects available
+          on my <a href="https://github.com/antoniocalapai" target="_blank" style="color:#ffd44b;">GitHub profile</a>.
+        </p>
 
-        <div class="metrics-card">
-          <h4>Custom-made Definitions</h4>
-          <p id="metric-funcs" class="metric-number"></p>
-        </div>
-
-        <div class="metrics-card">
-          <h4>Comments Percentage</h4>
-          <p id="metric-comments" class="metric-number"></p>
-        </div>
       </div>
 
-      <p class="metrics-caption" style="
-        text-align:center;
-        color:#8FA3B8;
-        margin-top:0rem;
-        font-size:0.9rem;
-        max-width:700px;
-        margin-left:auto;
-        margin-right:auto;">
-        These <span style="color:#ffd44b;">Python-only metrics</span> summarize the size, complexity,
-        originality, and readability of my codebase. They are based on both curated and non-curated projects available
-        on my <a href="https://github.com/antoniocalapai" target="_blank" style="color:#ffd44b;">GitHub profile</a>.
-      </p>
-
-    </div>
       <script>
-      fetch("assets/python_summary.json")
-        .then(r => r.json())
-        .then(d => {
-          document.getElementById("metric-loc").textContent =
-            d.python_loc.toLocaleString();
+        fetch("assets/python_summary.json")
+          .then(r => r.json())
+          .then(d => {
+            document.getElementById("metric-loc").textContent =
+              d.python_loc.toLocaleString();
 
-          document.getElementById("metric-cc").textContent =
-            d.avg_cyclomatic_complexity.toFixed(2);
+            document.getElementById("metric-cc").textContent =
+              d.avg_cyclomatic_complexity.toFixed(2);
 
-          document.getElementById("metric-comments").textContent =
-            (d.comment_ratio * 100).toFixed(1) + "%";
+            document.getElementById("metric-comments").textContent =
+              (d.comment_ratio * 100).toFixed(1) + "%";
 
-          document.getElementById("metric-funcs").textContent =
-            d.python_functions.toLocaleString();
-        });
+            document.getElementById("metric-funcs").textContent =
+              d.python_functions.toLocaleString();
+          });
       </script>
+    </section> <!-- end #skills -->
 
     <!-- Experience -->
     <section id="experience" class="section">
@@ -322,460 +374,69 @@ function initCarousel(id) {
       </div>
     </section>
 
-    <!-- Projects -->
-    <section i*d="projects" class="section section-alt">
-      <div class="container section-inner">
-
-        <div class="section-header">
-          <h2>Portfolio</h2>
-          <p class="section-lead">
-            A selection of projects at the intersection of neuroscience, machine vision, and autonomous systems.
-          </p>
-        </div>
-        <div class="grid projects-grid">
-
-          <!-- ABT -->
-          <article class="card">
-            <h3>Autonomous Behavioural Tracking (ABT)</h3>
-
-            <div id="carousel-abt" class="carousel">
-              <div class="carousel-images">
-                <img src="assets/abt_1.jpg" alt="ABT Concept">
-                <img src="assets/abt_2.jpg" alt="Elmo spotted by ABT">
-                <img src="assets/abt_3.jpg" alt="Joker spotted by ABT">
-              </div>
-              <button class="carousel-button prev">‹</button>
-              <button class="carousel-button next">›</button>
-            </div>
-
-            <p class="project-description" style="margin-bottom: 1.6rem;">
-              In this projects I am lead developer and coordinator of a group engineers and data scientists
-              belonging to different research groups of the Cognitive Neuroscience Laboratory (CNL) of the
-              German Primate Center. Here I designed and led the development of a stand-alone software to be
-              able to track, identify, and extract the posture of rhesus macaques in their enclosure with
-              the aim of autonomously assessing animals’ welfare and behaviour 24/7 without direct interference.
-            </p>
-
-            <p class="project-description" style="margin-bottom: 1.6rem;">
-              The system coordinates a network of synchronized cameras, GPU-based inference modules,
-              and centralized data-management pipelines to support continuous, high-throughput acquisition,
-              compression, analysis, and reporting.
-            </p>
-
-            <p class="project-description" style="margin-bottom: 1.6rem;">
-              High-resolution video streams are captured by up to <strong>16 Hikrobot GigE cameras</strong>,
-              connected through a dedicated network switch and synchronized via <strong>PTP</strong> or software
-              triggering. These streams are transmitted to a distributed GPU cluster, where a
-              <strong>2D Prediction module</strong> performs real-time object detection, keypoint extraction, and
-              individual animal identification.
-            </p>
-
-            <p class="project-description" style="margin-bottom: 1.6rem;">
-              Each node in the cluster employs <strong>TensorRT-optimized CNNs</strong>, trained and fine-tuned
-              through custom modules (<em>Model Training</em> and <em>Model Optimization</em>). Every processed frame
-              generates structured outputs—including bounding boxes, anatomical keypoints, and identity
-              labels—which are automatically logged and archived into text-based databases.
-            </p>
-
-            <p class="project-description" style="margin-bottom: 1.6rem;">
-              Processed outputs from the GPU cluster are transmitted to a <strong>Server computer</strong>, where
-              <em>3D Calibration</em>, <em>3D Transformation</em>, and <em>3D Localization</em> modules reconstruct
-              absolute spatial positions from synchronized camera pairs. Calibration follows checkerboard-based
-              stereo recordings using the <strong>JARVIS protocol</strong> (jarvis-mocap.github.io), generating
-              intrinsic/extrinsic parameters and distortion coefficients for each camera.
-            </p>
-
-            <p class="project-description" style="margin-bottom: 1.6rem;">
-              Transformation matrices are then computed to project all 2D coordinates into a unified world
-              reference frame, enabling accurate <strong>3D pose reconstruction</strong> and <strong>multi-animal
-              tracking</strong> across large experimental spaces. The data server manages compression, indexing,
-              and long-term storage of video and derivative datasets, ensuring reproducibility and accessibility.
-            </p>
-
-            <p class="project-description" style="margin-bottom: 1.6rem;">
-              Users interact with the system via the <strong>ABT graphical interface</strong> from a client computer,
-              which integrates tools for acquisition scheduling, system monitoring, and visualization of processed
-              results. The GUI also links to automated analysis modules that routinely compute behavioral readouts
-              and statistical summaries directly from processed data.
-            </p>
-
-            <p class="project-description" style="margin-bottom: 1.6rem;">
-              This automated architecture is designed to allow researchers to focus on analysis and interpretation,
-              while simultaneously enhancing <strong>reproducibility</strong> and <strong>standardization</strong>
-              across experimental setups and research questions.
-            </p>
-
-            <script>initCarousel("carousel-abt")</script>
-          </article>
-
-          <!-- XBI -->
-          <article class="card">
-            <h3>Cognitive Assessment, enrichment, and training, for Monkeys: the XBI devices </h3>
-
-            <div id="carousel-xbi" class="carousel">
-              <div class="carousel-images">
-                <img src="assets/XBI_1.jpg" alt="XBI for Rhesus">
-                <img src="assets/XBI_2.jpg" alt="XBI for Marmosets">
-                <img src="assets/XBI_3.jpg" alt="XBI for Long Tailed">
-              </div>
-              <button class="carousel-button prev">‹</button>
-              <button class="carousel-button next">›</button>
-            </div>
-
-            <p class="project-description">
-              Here I have focused on designing, developing, and deploying touchscreen devices, code,
-              and experimental protocols for captive monkeys (Rhesus macaques, Common Marmosets, Long-tailed macaques).
-              The devices are known as Experimental Behavioral Instruments, XBIs in short.
-              This approach represents a paradigm shift from traditional chair-seated methods, offering numerous benefits
-              for both the animals and the research process, and as a consequence it has received the support of the
-              scientific community. Through these devices and activities, captive animals can access cognitive training
-              and enrichment directly from their home enclosure. This not only reduces potential stress associated with
-              movement constraints but also provides cognitive assessment data.
-              From a practical standpoint, this system enhances the way cognitive research can be conducted.
-              By automating the data acquisition process, I have contributed to streamlining the research workflow,
-              saving considerable time and resources while improving animal welfare. This automation allows for
-              scaling up the number of animals tested simultaneously, addressing previous ethical, practical,
-              and scientific limitations in cognitive research with primates
-            </p>
-
-            <script>initCarousel("carousel-xbi")</script>
-          </article>
-
-          <!-- Neurons -->
-          <article class="card">
-            <h3>Neuronal Encoding of Motion and Depth</h3>
-
-            <div id="carousel-neuro" class="carousel">
-              <div class="carousel-images">
-                <img src="assets/neu_1.jpg" alt="">
-                <img src="assets/neu_2.jpg" alt="">
-                <img src="assets/neu_3.jpg" alt="">
-              </div>
-              <button class="carousel-button prev">‹</button>
-              <button class="carousel-button next">›</button>
-            </div>
-
-            <p class="project-description">
-              As part of my electrophysiology work, I investigated how single neurons in the macaque
-              Middle Superior Temporal area (MST) encode <strong>motion</strong> and <strong>depth</strong> information.
-              Monkeys were trained to fixate a central point, press a button for a dimming target, and wear
-              polarised glasses allowing presentation of stimuli at different depths.
-            </p>
-
-            <p class="project-description">
-              While the animal performed this simple task, I recorded extracellular activity from MST neurons
-              as clouds of moving dots varied rapidly in both motion direction and binocular disparity. This
-              allowed me to map each neuron's receptive field and quantify its joint selectivity to motion
-              and depth using <strong>Reverse Correlation</strong>.
-            </p>
-
-            <p class="project-description">
-              Theoretical work suggested that some MST neurons might act as <strong>self-motion detectors</strong>,
-              responding to specific combinations of direction and depth. In practice, I found a diversity
-              of tuning profiles, including neurons selective for:
-            </p>
-
-            <ul style="margin-left: 1.2rem; margin-bottom: 1.2rem; color: var(--fg-muted);">
-              <li>specific motion–depth combinations,</li>
-              <li>motion only,</li>
-              <li>depth only,</li>
-              <li>or mixed/complex patterns.</li>
-            </ul>
-
-            <p class="project-description">
-              Using <strong>Generalised Additive Models (GAMs)</strong> on 194 neurons, only <strong>one</strong> neuron
-              showed tuning consistent with a true self-motion detector. Most neurons combined motion and
-              depth in ways that provided the <em>building blocks</em> for self-motion computation, but not the
-              complete computation itself.
-            </p>
-
-            <p class="project-description">
-              These results indicate that MST does not explicitly encode self-motion, but instead provides
-              intermediate representations that are likely integrated <strong>downstream</strong> to support
-              perception of self-movement through space.
-            </p>
-
-            <script>initCarousel("carousel-neuro")</script>
-          </article>
-
-          <!-- M_ID -->
-          <article class="card">
-          <h3>Machine Vision for Monkeys Identification</h3>
-
-          <div id="carousel-mvi" class="carousel">
-            <div class="carousel-images">
-              <img src="assets/mvi_1.jpg" alt="">
-              <img src="assets/mvi_2.jpg" alt="">
-              <img src="assets/mvi_3.jpg" alt="">
-              <img src="assets/mvi_4.jpg" alt="">
-            </div>
-            <button class="carousel-button prev">‹</button>
-            <button class="carousel-button next">›</button>
-          </div>
-
-          <p class="project-description">
-            Since 2020, as part of my transition from neuroscience to software engineering, I have
-            integrated machine-learning approaches into several projects to solve three crucial challenges:
-          </p>
-
-          <ul style="margin-left: 1.2rem; margin-bottom: 1.2rem; color: var(--fg-muted);">
-            <li>identifying which animal is operating a touchscreen at any moment, enabling standardised yet individualised training and enrichment (Berger et al. 2018; Calapai et al. 2022; Cabrera-Moreno et al. 2022);</li>
-            <li>estimating gaze direction in real time while animals interact with touchscreen devices;</li>
-            <li>autonomously extracting location, identity, posture, and behaviour from video recordings with minimal human supervision.</li>
-          </ul>
-
-          <h4 style="margin-top:1.4rem;">Animal identification: real-time, low-latency CNN model</h4>
-
-          <p class="project-description">
-            To identify animals in real time, I trained a convolutional neural network in TensorFlow
-            (Python 3.7). The model consisted of:
-          </p>
-
-          <ul style="margin-left: 1.2rem; margin-bottom: 1.2rem; color: var(--fg-muted);">
-            <li>an average pooling input layer (6×3 kernel),</li>
-            <li>three convolutional layers (3×3 kernels; 64, 16, 32 units),</li>
-            <li>max-pooling, dropout, and flatten layers,</li>
-            <li>a dense hidden layer (ReLU),</li>
-            <li>a softmax output layer including an additional “null” class for accidental triggers.</li>
-          </ul>
-
-          <p class="project-description">
-            The network was trained for 10 epochs (batch size 32) using an <em>adam</em> optimizer, sparse
-            categorical cross-entropy, and accuracy as metric. Ground truth for the 40k training images
-            was created through a custom MATLAB GUI capable of labelling ~50 images per minute.
-          </p>
-
-          <p class="project-description">
-            This approach was applied to 11 animals across four housing groups (long-tailed and rhesus
-            macaques). Across >30k evaluations, the framework and training method had a much larger impact
-            on accuracy than the number of animals per network: the TensorFlow/Keras model I designed
-            significantly outperformed an equivalent CoreML model trained as a black box on a MacBook Pro.
-          </p>
-
-          <p class="project-description">
-            The best model (Keras) reached <strong>97.5% identification accuracy</strong> across 8 test animals and
-            40k images. The end-to-end processing time—from capturing the image to returning the identity
-            and loading the correct training target—was <strong>176 ms</strong>, enabling genuine real-time use.
-          </p>
-
-          <p class="project-description">
-            In my 2022 publication (Cabrera-Moreno et al.), this method was used in real time to implement
-            individualised, step-wise training for a visuo-acoustic discrimination task with long-tailed
-            macaques.
-          </p>
-
-          <h4 style="margin-top:1.4rem;">Automated hyperparameter search</h4>
-
-          <p class="project-description">
-            To identify the optimal network structure, I implemented an automated bootstrap procedure
-            (executed on Google Colab with GPU) exploring 46 parameter combinations, including:
-          </p>
-
-          <ul style="margin-left: 1.2rem; margin-bottom: 1.2rem; color: var(--fg-muted);">
-            <li>average pooling kernel size,</li>
-            <li>number of units in the three convolutional layers,</li>
-            <li>number of units in the dense hidden layer.</li>
-          </ul>
-
-          <p class="project-description">
-            The best configuration achieved <strong>98.7% accuracy</strong> in a two-animal test dataset and was used
-            during the actual experiment.
-          </p>
-
-          <p class="project-description">
-            This work is fully described in the peer-reviewed publication by Cabrera-Moreno et al. (2022).
-          </p>
-
-          <h4 style="margin-top:1.4rem;">Video-based gaze estimation</h4>
-
-          <p class="project-description">
-            In ongoing work, I apply DeepLabCut and custom machine-learning pipelines to detect
-            rhesus macaque and marmoset eyes in real time during touchscreen-based cognitive tasks.
-            The aim is to integrate <strong>gaze estimation</strong> directly into behavioural training, assessment,
-            and enrichment routines.
-          </p>
-
-          <p class="project-description">
-            (Work in progress — please feel free to contact me for details.)
-          </p>
-
-          <script>initCarousel("carousel-mvi")</script>
-        </article>
-
-          <!-- GAME -->
-        <article class="card">
-          <h3>Gamified Psychophysics</h3>
-
-          <div id="carousel-gam" class="carousel">
-            <div class="carousel-images">
-              <img src="assets/gam_1.jpg" alt="">
-              <img src="assets/gam_2.jpg" alt="">
-              <img src="assets/gam_3.jpg" alt="">
-            </div>
-            <button class="carousel-button prev">‹</button>
-            <button class="carousel-button next">›</button>
-          </div>
-
-          <p class="project-description">
-            Since 2022 I am designing, programming, and testing psychophysical experiments
-            that incorporate gaming elements, to study Cognition, Motion Processing,
-            Decision-Making, and Integration of Social Information.
-          </p>
-
-          <p class="project-description">
-            Four major projects sparked from this effort:
-          </p>
-
-          <ul style="margin-left:1.2rem; margin-bottom:1.2rem; color:var(--fg-muted);">
-            <li>An investigation on the validity of gamified psychophysics for the study of motion processing;</li>
-            <li>A dyadic, joystick-based game to study the integration of social information in decision-making;</li>
-            <li>A multiple-choice user interface optimised for cognitive assessment, enrichment, and psychophysics in monkeys;</li>
-            <li>A foraging-like game to study high-level cognitive flexibility in monkeys and humans.</li>
-          </ul>
-
-          <h4 style="margin-top:1.4rem;">Validity of gamified psychophysics for motion processing</h4>
-
-          <p class="project-description">
-            Across three experimental conditions with gradually different levels of gamification
-            (Standard, Gamified, Unreal Engine), participants played the exact same motion-perception
-            task. Gamification increased satisfaction, reduced dropout rates, and improved motion sensitivity,
-            especially in the Unreal Engine condition.
-          </p>
-
-          <p class="project-description">
-            Participants controlled an avatar that moved left/right by following the global motion of
-            a cloud of dots. Obstacles appeared too quickly to react, and could be avoided only by
-            correctly interpreting motion direction. Points, levels, and dynamic backgrounds supported
-            engagement without compromising psychophysical rigor.
-          </p>
-
-          <h4 style="margin-top:1.4rem;">Dyadic joystick game for social-information integration</h4>
-
-          <p class="project-description">
-            This task evaluated whether humans integrate social motion cues during decision-making.
-            Two players simultaneously navigated using joysticks around a cloud of dots whose motion
-            predicted where targets would appear. Each participant saw their own arc and the other
-            player’s arc. Data analysis is ongoing and cannot be disclosed publicly yet.
-          </p>
-
-          <h4 style="margin-top:1.4rem;">Multiple-choice interface (“Task Bar”) for monkeys</h4>
-
-          <p class="project-description">
-            This system, published in 2023 (Animals), allows monkeys to select cognitive enrichment
-            tasks from their enclosure — a “dock bar” with three buttons:
-          </p>
-
-          <ul style="margin-left:1.2rem; margin-bottom:1.2rem; color:var(--fg-muted);">
-            <li>Static reach: touch a red ball</li>
-            <li>Dynamic reach: touch a moving red ball</li>
-            <li>Watch pictures of conspecifics</li>
-          </ul>
-
-          <p class="project-description">
-            Monkeys reliably chose their preferred tasks, and button repositioning every hour did not
-            affect their preferences. Performance metrics (hit rates across size/speed combinations)
-            revealed consistent psychophysical signatures.
-          </p>
-
-          <h4 style="margin-top:1.4rem;">Foraging-like cognitive flexibility task</h4>
-
-          <p class="project-description">
-            Published in 2022 (Frontiers in Psychology), this complex task assessed rule learning and
-            switching in monkeys and humans (including adults and children with/without ADHD). Animals
-            played thousands of trials per session with strong engagement.
-          </p>
-
-          <p class="project-description">
-            Results show that humans are more flexible and abstract in rule learning, but monkeys display
-            stable individual styles and domain-general rule learning that does not depend on visual category.
-          </p>
-
-          <script>initCarousel("carousel-gam")</script>
-        </article>
-
-          <!-- MARM -->
-        <article class="card">
-          <h3>Acoustic Perception in Marmosets</h3>
-
-          <div id="carousel-aco" class="carousel">
-            <div class="carousel-images">
-              <img src="assets/aco_1.jpg" alt="">
-              <img src="assets/aco_2.jpg" alt="">
-              <img src="assets/aco_3.jpg" alt="">
-            </div>
-            <button class="carousel-button prev">‹</button>
-            <button class="carousel-button next">›</button>
-          </div>
-
-          <p class="project-description">
-            This project explored how natural, socially meaningful sounds can improve learning and
-            engagement in cognitive training. Using a fully autonomous touchscreen system designed
-            for common marmosets (MXBI), we showed that ecologically valid acoustic cues such as
-            conspecific calls lead to faster learning than artificial tones.
-          </p>
-
-          <p class="project-description">
-            The MXBI system operates directly in home enclosures, where animals voluntarily interact
-            with sound-based tasks identified via RFID. The system adapts task difficulty in real time
-            and removes the need for social isolation or food deprivation, turning cognitive testing
-            into an enrichment activity aligned with natural behaviour.
-          </p>
-
-          <p class="project-description">
-            The key result: ecological relevance matters. Marmosets learn faster, stay engaged longer,
-            and perform better when acoustic cues match their natural perceptual world.
-          </p>
-
-          <h4 style="margin-top:1.4rem;">Figure explanation: learning and motivation</h4>
-
-          <p class="project-description">
-            Over repeated sessions, animals consistently improved their ability to associate specific
-            acoustic cues with visual choices, performing hundreds of voluntary trials per day without
-            supervision. Natural sounds evoked stronger curiosity and sustained motivation compared to
-            artificial tones or noise stimuli.
-          </p>
-
-          <h4 style="margin-top:1.4rem;">Hearing thresholds</h4>
-
-          <p class="project-description">
-            Using an adaptive reward scheme across sound intensities, marmosets’ hearing thresholds were
-            automatically estimated in the MXBI system. Psychometric curves revealed thresholds around
-            27–49 dB SPL and matched known species-specific hearing ranges.
-          </p>
-
-          <h4 style="margin-top:1.4rem;">Sound categories and discrimination</h4>
-
-          <p class="project-description">
-            Marmosets discriminated between five sound categories:
-          </p>
-
-          <ul style="margin-left:1.2rem; margin-bottom:1.2rem; color:var(--fg-muted);">
-            <li>Juvenile calls</li>
-            <li>Twitter calls</li>
-            <li>Phee calls</li>
-            <li>Sine tones</li>
-            <li>White noise</li>
-          </ul>
-
-          <p class="project-description">
-            Natural calls produced faster learning and higher accuracy than artificial sounds. Sensitivity
-            measures and hit rates both confirmed superior performance with biologically meaningful stimuli.
-          </p>
-
-          <p class="project-description">
-            As first author, I developed the hardware, software architecture, adaptive algorithms, and
-            behavioural validation framework. The MXBI platform shows that auditory cognition can be
-            assessed ethically and fully autonomously inside social enclosures.
-          </p>
-
-          <script>initCarousel("carousel-aco")</script>
-        </article>
-
-        </div>
+    <!-- Projects (tabbed) -->
+    <section id="projects" class="section section-alt">
+  <div class="container section-inner">
+
+    <div class="section-header">
+      <h2>Portfolio</h2>
+      <p class="section-lead">
+        A selection of projects at the intersection of neuroscience, machine vision, and autonomous systems.
+      </p>
+    </div>
+
+    <div class="projects-shell">
+
+      <!-- Tabs -->
+      <div class="project-tabs">
+        <button class="project-tab active" data-file="projects/abt.html">ABT · Behavioral Tracking</button>
+        <button class="project-tab" data-file="projects/xbi.html">XBI · Touchscreen Devices</button>
+        <button class="project-tab" data-file="projects/neuro.html">Neuronal Motion & Depth</button>
+        <button class="project-tab" data-file="projects/mvi.html">Machine Vision · ID</button>
+        <button class="project-tab" data-file="projects/gamify.html">Gamified Psychophysics</button>
+        <button class="project-tab" data-file="projects/aco.html">Marmoset Acoustics</button>
+        <button class="project-tab" data-file="projects/dyadic.html">Dyadic Social Game</button>
+        <button class="project-tab" data-file="projects/mci.html">Monkeys Gaming </button>
       </div>
 
+      <!-- Panels -->
+      <div class="project-panels">
+        <article class="card project-panel active"></article>
+      </div>
 
-    </section>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabs = document.querySelectorAll(".project-tab");
+      const panelContainer = document.querySelector(".project-panels");
+
+      // Load default tab
+      const first = document.querySelector(".project-tab.active");
+      if (first) loadFile(first.dataset.file);
+
+      tabs.forEach(btn => {
+        btn.addEventListener("click", () => {
+          tabs.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          loadFile(btn.dataset.file);
+        });
+      });
+
+      function loadFile(file) {
+        fetch(file)
+          .then(r => r.text())
+          .then(html => {
+            panelContainer.innerHTML = html;
+            panelContainer.querySelectorAll(".carousel").forEach(c => initCarousel(c.id));
+          });
+      }
+    });
+  </script>
+
+</section>
 
     <!-- Publications -->
     <section id="publications" class="section">
@@ -849,16 +510,15 @@ function initCarousel(id) {
         </div>
       </div>
     </section>
-  </main>
 
-   <!-- Footer -->
+  </main>
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> Antonino Calapai</p>
       <p>Built with plain HTML &amp; CSS · Hosted on GitHub Pages</p>
     </div>
     <script>
-      // Simple year update, no dependencies
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </footer>

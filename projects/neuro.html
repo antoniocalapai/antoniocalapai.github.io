@@ -1,0 +1,54 @@
+<article id="project-neuro" class="card project-panel active">
+  <h3>Neuronal Encoding of Motion and Depth</h3>
+
+  <div id="carousel-neuro" class="carousel">
+    <div class="carousel-images">
+      <img src="assets/neu_1.jpg" alt="Neuron response map">
+      <img src="assets/neu_2.jpg" alt="Depth tuning example">
+      <img src="assets/neu_3.jpg" alt="Motion-depth interaction">
+    </div>
+    <button class="carousel-button prev">‹</button>
+    <button class="carousel-button next">›</button>
+  </div>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    As part of my electrophysiology work, I investigated how single neurons in the macaque
+    Middle Superior Temporal area (MST) encode <strong>motion</strong> and <strong>depth</strong>
+    information. Monkeys were trained to fixate a central point, press a button for a dimming
+    target, and wear polarised glasses enabling presentation of stimuli at different depths.
+  </p>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    During the task, I recorded extracellular activity while clouds of moving dots varied rapidly
+    in motion direction and binocular disparity. This allowed me to map receptive fields and quantify
+    joint tuning to motion and depth using <strong>Reverse Correlation</strong>.
+  </p>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    Theory suggested that some MST neurons might act as <strong>self-motion detectors</strong>,
+    responding to specific combinations of direction and depth. In practice, I found a diversity
+    of tuning profiles:
+  </p>
+
+  <ul style="margin-left:1.2rem; margin-bottom:1.6rem; color:var(--fg-muted);">
+    <li>specific motion–depth combinations,</li>
+    <li>motion-only tuning,</li>
+    <li>depth-only tuning,</li>
+    <li>mixed or complex patterns.</li>
+  </ul>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    Using <strong>Generalised Additive Models (GAMs)</strong> on 194 neurons, only
+    <strong>one</strong> neuron showed tuning consistent with a true self-motion detector. Most neurons
+    appeared to provide intermediate building blocks for self-motion processing, but not the complete
+    computation itself.
+  </p>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    These findings indicate that MST does not explicitly encode self-motion. Instead, it provides
+    rich motion–depth representations that are likely combined <strong>downstream</strong> to support
+    perception of self-movement through space.
+  </p>
+
+  <script>initCarousel("carousel-neuro")</script>
+</article>

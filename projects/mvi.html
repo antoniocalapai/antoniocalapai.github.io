@@ -1,0 +1,75 @@
+<article id="project-abt" class="card project-panel active">
+  <h3>Machine Vision for Monkey Identification</h3>
+
+  <div id="carousel-mvi" class="carousel">
+    <div class="carousel-images">
+      <img src="assets/mvi_1.jpg" alt="Face detection example">
+      <img src="assets/mvi_2.jpg" alt="Identity classification">
+      <img src="assets/mvi_3.jpg" alt="Camera acquisition example">
+      <img src="assets/mvi_4.jpg" alt="Real-time identification pipeline">
+    </div>
+    <button class="carousel-button prev">‹</button>
+    <button class="carousel-button next">›</button>
+  </div>
+
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    Since 2020, I have integrated machine-learning approaches into several projects to solve
+    three key challenges in behavioural neuroscience:
+  </p>
+
+  <ul style="margin-left:1.2rem; margin-bottom:1.6rem; color:var(--fg-muted);">
+    <li>identifying which animal is operating a touchscreen at any moment,</li>
+    <li>estimating gaze direction in real time during touchscreen tasks,</li>
+    <li>extracting location, identity, posture, and behaviour from video with minimal human supervision.</li>
+  </ul>
+
+  <h4 style="margin-top:1.4rem;">Real-time Identity Recognition</h4>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    I designed and trained a low-latency convolutional neural network in TensorFlow (Python 3.7)
+    to identify monkeys in real time. The model included:
+  </p>
+
+  <ul style="margin-left:1.2rem; margin-bottom:1.6rem; color:var(--fg-muted);">
+    <li>an average pooling input layer (6×3 kernel),</li>
+    <li>three convolutional layers (3×3 kernels; 64, 16, 32 units),</li>
+    <li>max-pooling, dropout, and flatten layers,</li>
+    <li>a dense hidden layer,</li>
+    <li>a softmax output layer including a “null” class for accidental triggers.</li>
+  </ul>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    The network was trained for 10 epochs using 40k manually labeled training images.
+    Ground truth was generated using a MATLAB GUI I built, capable of annotating ~50 images/minute.
+  </p>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    Applied across 11 monkeys, the model significantly outperformed an equivalent CoreML model
+    trained as a black box. The best configuration achieved
+    <strong>97.5% identification accuracy</strong> and real-time latency of <strong>176 ms</strong>
+    from image capture to identity output.
+  </p>
+
+  <h4 style="margin-top:1.4rem;">Automated Hyperparameter Search</h4>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    I implemented a GPU-based bootstrap search (Google Colab) exploring 46 architectural combinations,
+    including pooling sizes, convolutional layer widths, and dense-layer units. The optimal configuration
+    reached <strong>98.7% accuracy</strong> in test datasets and was used for live experiments.
+  </p>
+
+  <h4 style="margin-top:1.4rem;">Video-based Gaze Estimation</h4>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    Ongoing work applies DeepLabCut and custom pipelines to detect eye positions in real time during
+    touchscreen interactions, with the aim of integrating <strong>gaze estimation</strong> directly into
+    cognitive tasks and enrichment routines.
+  </p>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    (Work in progress — contact me for details.)
+  </p>
+
+  <script>initCarousel("carousel-mvi")</script>
+</article>
