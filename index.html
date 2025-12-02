@@ -55,36 +55,55 @@
   </style>
 </head>
 
-<script>
-function initCarousel(id) {
-  const carousel = document.getElementById(id);
-  if (!carousel) return;
-  const track = carousel.querySelector('.carousel-images');
-  const images = track.querySelectorAll('img');
-  let index = 0;
+  <script>
+  function initCarousel(id) {
+    const carousel = document.getElementById(id);
+    if (!carousel) return;
 
-  const update = () => {
-    track.style.transform = `translateX(-${index * 100}%)`;
-  };
+    const track = carousel.querySelector('.carousel-images');
+    const images = track.querySelectorAll('img');
+    let index = 0;
 
-  const prevBtn = carousel.querySelector('.prev');
-  const nextBtn = carousel.querySelector('.next');
+    // --- Resize the carousel to the height of the current image ---
+    function resizeCarousel() {
+      const currentImg = images[index];
+      if (currentImg && currentImg.complete) {
+        carousel.style.height = currentImg.offsetHeight + "px";
+      } else if (currentImg) {
+        currentImg.onload = () => {
+          carousel.style.height = currentImg.offsetHeight + "px";
+        };
+      }
+    }
 
-  if (prevBtn) {
-    prevBtn.onclick = () => {
-      index = (index - 1 + images.length) % images.length;
-      update();
+    // --- Update slide ---
+    const update = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      resizeCarousel();
     };
-  }
 
-  if (nextBtn) {
-    nextBtn.onclick = () => {
-      index = (index + 1) % images.length;
-      update();
-    };
+    // --- Buttons ---
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+
+    if (prevBtn) {
+      prevBtn.onclick = () => {
+        index = (index - 1 + images.length) % images.length;
+        update();
+      };
+    }
+
+    if (nextBtn) {
+      nextBtn.onclick = () => {
+        index = (index + 1) % images.length;
+        update();
+      };
+    }
+
+    // --- Initial sizing ---
+    resizeCarousel();
   }
-}
-</script>
+  </script>
 
 <body>
 
