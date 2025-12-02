@@ -601,3 +601,48 @@ body {
   display: block;
 }
 
+/* Ensure carousel wrapper is the positioning anchor */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Image track */
+.carousel-images {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Make sure images scale nicely */
+.carousel-images img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Fix button alignment */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  /* Style */
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Left & right alignment (corrected) */
+.carousel-button.prev {
+  left: 1rem;    /* was too far left before */
+}
+
+.carousel-button.next {
+  right: 1rem;   /* was too far right before */
+}
