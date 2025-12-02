@@ -522,3 +522,49 @@ body {
   font-size: 0.95rem;
   line-height: 1.55;
 }
+
+.metrics-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.metrics-card {
+  background: rgba(255,255,255,0.05);
+  padding: 1.6rem 1.8rem;
+  border-radius: 14px;
+  width: 190px;
+  text-align: center;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.metrics-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.10);
+}
+
+.metrics-card h4 {
+  margin: 0 0 0.6rem 0;
+  font-size: 1rem;
+  color: #E8ECF2;
+}
+
+.metric-number {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #F6D860;  /* yellow text */
+}
+
+.metrics-github-note {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--fg-muted);
+}
+
+.metrics-github-note a {
+  color: #F6D860;
+  text-decoration: underline;
+}

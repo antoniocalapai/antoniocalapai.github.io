@@ -33,10 +33,10 @@ function initCarousel(id) {
 }
 </script>
 <body>
+   <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo">
-        <span class="logo-mark"></span>
         <span class="logo-text">Dr. Antonino Calapai</span>
       </div>
       <nav class="nav">
@@ -64,7 +64,7 @@ function initCarousel(id) {
           </p>
           <div class="hero-actions">
             <!-- Update the CV link once your PDF is in the repo -->
-            <a class="btn btn-primary" href="#experience">View Experience</a>
+            <a class="btn btn-primary" href="#projects">View Portfolio</a>
             <a class="btn btn-secondary" href="#contact">Contact me</a>
           </div>
         </div>
@@ -100,8 +100,11 @@ function initCarousel(id) {
             <ul>
               <li>Python</li>
               <li>Matlab</li>
-              <li>C# / C++</li>
               <li>Bash</li>
+              <li>C# / C++</li>
+              <li>R / SPSS</li>
+              <li>HTML</li>
+
             </ul>
           </div>
           <div class="card">
@@ -137,7 +140,75 @@ function initCarousel(id) {
           </div>
         </div>
       </div>
-    </section>
+
+            <<!-- Code Metrics -->
+        <div class="container section-inner">
+          <div class="metrics-card"
+               style="
+                 background: rgba(255,255,255,0.04);
+                 border-radius: 18px;
+                 padding: 2rem;
+                 text-align: center;
+                 width: 100%;
+               ">
+
+            <img src="assets/wordcloud.jpg"
+                 alt="Python import wordcloud"
+                 style="
+                   width: 95%;
+                   max-width: 1100px;
+                   border-radius: 10px;
+                   display: block;
+                   margin: 0 auto;
+                 ">
+          </div>
+        </div>
+
+      <!-- Code Metrics (no title, right below wordcloud) -->
+      <div class="metrics-infographic container section-inner" style="margin-top: 2rem;">
+
+        <div class="metrics-cards">
+
+          <div class="metrics-card">
+            <h4>Python LOC</h4>
+            <p id="metric-loc" class="metric-number"></p>
+          </div>
+
+          <div class="metrics-card">
+            <h4>Avg Complexity</h4>
+            <p id="metric-cc" class="metric-number"></p>
+          </div>
+
+          <div class="metrics-card">
+            <h4>Python Files</h4>
+            <p id="metric-files" class="metric-number"></p>
+          </div>
+
+          <div class="metrics-card">
+            <h4>Definitions</h4>
+            <p id="metric-funcs" class="metric-number"></p>
+          </div>
+
+        </div>
+
+        <p class="metrics-github-note">
+          These <span style="color:#ffd44b;">Python-only statistics</span> are based on the various curated, and non-curated codebases that can be found on my
+          <a href="https://github.com/antoniocalapai" target="_blank">GitHub profile</a>.
+        </p>
+
+      </div>
+
+      <script>
+      fetch("assets/python_summary.json")
+        .then(r => r.json())
+        .then(d => {
+          document.getElementById("metric-loc").textContent     = d.python_loc.toLocaleString();
+          document.getElementById("metric-cc").textContent      = d.avg_cyclomatic_complexity.toFixed(2);
+          document.getElementById("metric-files").textContent   = d.python_files;
+          document.getElementById("metric-funcs").textContent   = d.python_functions;
+        });
+      </script>
+
 
     <!-- About -->
     <section id="about" class="section">
@@ -297,7 +368,6 @@ function initCarousel(id) {
             A selection of projects at the intersection of neuroscience, machine vision, and autonomous systems.
           </p>
         </div>
-
         <div class="grid projects-grid">
 
           <!-- ABT -->
@@ -464,7 +534,7 @@ function initCarousel(id) {
             <script>initCarousel("carousel-neuro")</script>
           </article>
 
-          <!-- Animal Identification -->
+          <!-- M_ID -->
           <article class="card">
           <h3>Machine Vision for Monkeys Identification</h3>
 
@@ -568,7 +638,7 @@ function initCarousel(id) {
           <script>initCarousel("carousel-mvi")</script>
         </article>
 
-          <!-- Gamified Psychophysics -->
+          <!-- GAME -->
         <article class="card">
           <h3>Gamified Psychophysics</h3>
 
@@ -659,7 +729,7 @@ function initCarousel(id) {
           <script>initCarousel("carousel-gam")</script>
         </article>
 
-          <!-- Acoustic Perception -->
+          <!-- MARM -->
         <article class="card">
           <h3>Acoustic Perception in Marmosets</h3>
 
@@ -739,6 +809,8 @@ function initCarousel(id) {
 
         </div>
       </div>
+
+
     </section>
 
     <!-- Contact -->
@@ -761,12 +833,11 @@ function initCarousel(id) {
             </ul>
           </div>
           <div>
-            <h3>Current interests</h3>
             <ul class="pill-list">
-              <li>Data & ML engineering roles</li>
-              <li>Machine vision & tracking</li>
-              <li>Cognitive enrichment platforms</li>
-              <li>Robotics & interactive systems</li>
+              <li>Speaking ++Italian +English, ~German </li>
+              <li>Married and father of three</li>
+              <li>Amateur musician and producer</li>
+              <li>Aspiring game designer</li>
             </ul>
           </div>
         </div>
@@ -774,6 +845,7 @@ function initCarousel(id) {
     </section>
   </main>
 
+   <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> Antonino Calapai</p>
