@@ -1,89 +1,85 @@
-<article id="project-gam" class="card project-panel active">
+<article id="project-gamify" class="card project-panel active">
   <h3>Gamified Psychophysics</h3>
 
-  <div id="carousel-gam" class="carousel">
+  <div id="carousel-gamify" class="carousel">
     <div class="carousel-images">
       <img src="assets/gam_1.jpg" alt="">
       <img src="assets/gam_2.jpg" alt="">
       <img src="assets/gam_3.jpg" alt="">
+      <img src="assets/gam_4.jpg" alt="">
     </div>
     <button class="carousel-button prev">‹</button>
     <button class="carousel-button next">›</button>
   </div>
 
-  <p class="project-description">
-    Since 2022 I am designing, programming, and testing psychophysical experiments
-    that incorporate gaming elements, to study Cognition, Motion Processing,
-    Decision-Making, and Integration of Social Information.
+  <p class="project-description" style="margin-bottom:1.4rem;">
+    Since 2022, I have been designing, programming, and testing psychophysical
+    experiments that incorporate <strong>game-like mechanics</strong> to study:
+    <em>Cognition</em>, <em>Motion Processing</em>, <em>Decision-Making</em>,
+    and <em>Social Information Integration</em>.
   </p>
 
   <p class="project-description">
-    Four major projects sparked from this effort:
+    Four major projects emerged from this effort:
   </p>
 
-  <ul style="margin-left:1.2rem; margin-bottom:1.2rem; color:var(--fg-muted);">
-    <li>An investigation on the validity of gamified psychophysics for the study of motion processing;</li>
-    <li>A dyadic, joystick-based game to study the integration of social information in decision-making;</li>
-    <li>A multiple-choice user interface optimised for cognitive assessment, enrichment, and psychophysics in monkeys;</li>
-    <li>A foraging-like game to study high-level cognitive flexibility in monkeys and humans.</li>
+  <ul style="margin-left:1.2rem; margin-bottom:1.8rem; color:var(--fg-muted);">
+    <li>Validity of gamified psychophysics for studying motion perception</li>
+    <li>Dyadic joystick game for social-information integration</li>
+    <li>Multiple-choice interface for monkey enrichment and assessment</li>
+    <li>Foraging-like cognitive flexibility task for humans and monkeys</li>
   </ul>
 
-  <h4 style="margin-top:1.4rem;">Validity of gamified psychophysics for motion processing</h4>
+  <!-- ---------------------------------------------------------- -->
+  <!-- 1. Motion Processing + Gamification                        -->
+  <!-- ---------------------------------------------------------- -->
+  <h4 style="margin-top:1.4rem;">Can game elements be used in psychophysics?</h4>
 
-  <p class="project-description">
-    Across three experimental conditions with gradually different levels of gamification
-    (Standard, Gamified, Unreal Engine), participants played the exact same motion-perception
-    task. Gamification increased satisfaction, reduced dropout rates, and improved motion sensitivity,
-    especially in the Unreal Engine condition.
+  <p class="project-description" style="margin-bottom:1.2rem;">
+    <strong>The short answer is yes.</strong>
+    We compared three versions of the same motion-perception task with progressively
+    stronger gamification:
   </p>
 
-  <p class="project-description">
-    Participants controlled an avatar that moved left/right by following the global motion of
-    a cloud of dots. Obstacles appeared too quickly to react, and could be avoided only by
-    correctly interpreting motion direction. Points, levels, and dynamic backgrounds supported
-    engagement without compromising psychophysical rigor.
-  </p>
-
-  <h4 style="margin-top:1.4rem;">Dyadic joystick game for social-information integration</h4>
-
-  <p class="project-description">
-    This task evaluated whether humans integrate social motion cues during decision-making.
-    Two players simultaneously navigated using joysticks around a cloud of dots whose motion
-    predicted where targets would appear. Each participant saw their own arc and the other
-    player’s arc. Data analysis is ongoing and cannot be disclosed publicly yet.
-  </p>
-
-  <h4 style="margin-top:1.4rem;">Multiple-choice interface (“Task Bar”) for monkeys</h4>
-
-  <p class="project-description">
-    This system, published in 2023 (Animals), allows monkeys to select cognitive enrichment
-    tasks from their enclosure — a “dock bar” with three buttons:
-  </p>
-
-  <ul style="margin-left:1.2rem; margin-bottom:1.2rem; color:var(--fg-muted);">
-    <li>Static reach: touch a red ball</li>
-    <li>Dynamic reach: touch a moving red ball</li>
-    <li>Watch pictures of conspecifics</li>
+  <ul style="margin-left:1.2rem; margin-bottom:1.4rem; color:var(--fg-muted);">
+    <li><strong>Standard:</strong> classic psychophysics, no game elements</li>
+    <li><strong>Gamified:</strong> 2D visuals, levels, scoring</li>
+    <li><strong>Unreal Engine:</strong> full 3D arcade-style experience</li>
   </ul>
 
-  <p class="project-description">
-    Monkeys reliably chose their preferred tasks, and button repositioning every hour did not
-    affect their preferences. Performance metrics (hit rates across size/speed combinations)
-    revealed consistent psychophysical signatures.
-  </p>
-
-  <h4 style="margin-top:1.4rem;">Foraging-like cognitive flexibility task</h4>
-
-  <p class="project-description">
-    Published in 2022 (Frontiers in Psychology), this complex task assessed rule learning and
-    switching in monkeys and humans (including adults and children with/without ADHD). Animals
-    played thousands of trials per session with strong engagement.
+  <p class="project-description" style="margin-bottom:1.4rem;">
+    Participants controlled an avatar using a joystick: moving left/right to jump
+    between lanes, and forward/backward to control speed. Obstacles appeared too fast
+    to dodge, and could only be avoided by correctly interpreting the <em>motion direction
+    of a cloud of dots</em>—the core psychophysical stimulus.
   </p>
 
   <p class="project-description">
-    Results show that humans are more flexible and abstract in rule learning, but monkeys display
-    stable individual styles and domain-general rule learning that does not depend on visual category.
+    The narrative:
+    participants were trapped in an infinite obstacle course, guided by a hidden AI
+    that communicated through the dot cloud. As levels progressed, noise increased,
+    obstacles multiplied, and difficulty ramped up.
   </p>
 
-  <script>initCarousel("carousel-gam")</script>
+  <p class="project-description" style="margin-top:1.4rem; margin-bottom:1.4rem;">
+    Across 30 participants (10 per condition), those in the <strong>Unreal Engine</strong>
+    condition improved their motion sensitivity the most. Reaction times and perceptual
+    structure remained consistent across all conditions: <strong>rigor preserved,
+    engagement increased</strong>.
+  </p>
+
+  <p class="project-description">
+    Gamification also increased:
+    <ul style="margin-left:1.2rem; margin-top:0.4rem; color:var(--fg-muted);">
+      <li>task enjoyment</li>
+      <li>rate of participation</li>
+      <li>dropout resistance</li>
+    </ul>
+  </p>
+
+  <p class="project-description" style="margin-top:1rem; margin-bottom:2rem;">
+    <em>Paper in preparation — stay tuned.</em>
+  </p>
+
+  <script>initCarousel("carousel-gamify")</script>
 </article>

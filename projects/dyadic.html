@@ -1,53 +1,93 @@
 <article class="card project-panel active">
   <h3>Dyadic Joystick Game for Social-Information Integration</h3>
 
-  <div id="carousel-abt" class="carousel">
+  <div id="carousel-dyadic" class="carousel">
     <div class="carousel-images">
-      <img src="assets/abt_1.jpg" alt="ABT Concept">
-      <img src="assets/abt_2.jpg" alt="Elmo spotted by ABT">
-      <img src="assets/abt_3.jpg" alt="Joker spotted by ABT">
+      <img src="assets/cpr_1.jpg" alt="Dyadic task illustration">
+      <img src="assets/cpr_2.jpg" alt="Dyadic behavioural example">
     </div>
     <button class="carousel-button prev">‹</button>
     <button class="carousel-button next">›</button>
   </div>
 
-  <p class="project-description">
-    This project investigates how humans integrate <strong>social motion cues</strong> during
-    decision-making in a dynamic visual task. Two participants simultaneously control
-    joystick-driven avatars while observing a cloud of dots whose motion predicts the
-    location of upcoming targets.
+  <p class="project-description" style="margin-bottom:1.4rem;">
+    This project investigates whether humans integrate <strong>socially derived motion
+    information</strong> when making rapid, continuous navigational decisions under
+    uncertainty. The paradigm is inspired by the structure of naturalistic,
+    multi-agent decision-making tasks such as those used in
+    <em>Schneider et al., eLife (2023)</em>.
   </p>
 
-  <p class="project-description">
-    Each participant sees two arcs on the screen:
+  <p class="project-description" style="margin-bottom:1.4rem;">
+    Two participants simultaneously interact with a cloud of moving dots whose global
+    motion predicts the location of upcoming targets. Each participant controls an
+    avatar-like <em>arc</em> using a joystick, attempting to collect targets that appear
+    at unpredictable moments.
   </p>
 
-  <ul style="margin-left:1.2rem; margin-bottom:1.2rem; color:var(--fg-muted);">
-    <li><strong>Their own predictive arc</strong> – derived from the dot-motion field.</li>
-    <li><strong>The partner’s predictive arc</strong> – representing the other player's estimate.</li>
+  <h4 style="margin-top:1.6rem;">Dual Predictive Cues</h4>
+
+  <p class="project-description">
+    On every frame, each participant sees two sources of motion-based prediction:
+  </p>
+
+  <ul style="margin-left:1.2rem; margin-bottom:1.6rem; color:var(--fg-muted);">
+    <li><strong>Self-prediction:</strong> the participant’s own arc, updated from the dot-motion field.</li>
+    <li><strong>Partner-prediction:</strong> a second arc showing the other participant’s estimate.</li>
   </ul>
 
-  <p class="project-description">
-    The key question is whether players integrate these social motion cues when making
-    rapid navigational decisions under uncertainty.
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    The central question is whether subjects integrate this <strong>social motion cue</strong>
+    in addition to their own sensory evidence, especially when motion signals are weak
+    or ambiguous.
   </p>
 
   <h4 style="margin-top:1.4rem;">Task Structure</h4>
 
   <p class="project-description">
-    Participants repeatedly perform trials requiring them to:
+    Each trial requires participants to:
   </p>
 
-  <ul style="margin-left:1.2rem; margin-bottom:1.2rem; color:var(--fg-muted);">
-    <li>interpret noisy motion signals,</li>
-    <li>coordinate movement toward reward zones,</li>
-    <li>avoid obstacles requiring fast reactions,</li>
-    <li>and anticipate the partner’s behaviour.</li>
+  <ul style="margin-left:1.2rem; margin-bottom:1.6rem; color:var(--fg-muted);">
+    <li>read out noisy global motion from the dot stimulus,</li>
+    <li>move the joystick to position the arc around predicted target regions,</li>
+    <li>collect visual targets before they disappear,</li>
+    <li>avoid obstacles requiring rapid motor adjustments,</li>
+    <li>and infer whether the partner’s behaviour provides useful additional evidence.</li>
   </ul>
 
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    Because both players interact in real time, the task naturally produces dynamic
+    patterns of cooperation, information pooling, and divergence—well suited for
+    modelling social evidence accumulation.
+  </p>
+
+  <h4 style="margin-top:1.4rem;">What the Paradigm Measures</h4>
+
   <p class="project-description">
-    The paradigm produces rich datasets covering perceptual precision, collaboration,
-    and behavioural strategy.
+    The task generates rich multi-dimensional datasets including:
+  </p>
+
+  <ul style="margin-left:1.2rem; margin-bottom:1.6rem; color:var(--fg-muted);">
+    <li>moment-to-moment sensitivity to motion direction,</li>
+    <li>integration weights for self vs. partner cues,</li>
+    <li>temporal coupling between players’ trajectories,</li>
+    <li>adaptation to partner reliability,</li>
+    <li>error correction and recovery strategies.</li>
+  </ul>
+
+  <p class="project-description" style="margin-bottom:1.6rem;">
+    These signatures allow quantitative comparison to theories of
+    <strong>social Bayesian inference, shared evidence accumulation, and distributed decision-making</strong>,
+    as in modern multi-agent perceptual-decision tasks.
+  </p>
+
+  <h4 style="margin-top:1.4rem;">Current Status</h4>
+
+  <p class="project-description" style="margin-bottom:2rem;">
+    Data analysis is ongoing. The study is being prepared for publication, including a
+    detailed modelling component relating behavioural trajectories to continuous
+    social-information integration.
   </p>
 
   <script>initCarousel("carousel-dyadic")</script>
