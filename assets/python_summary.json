@@ -65,5 +65,6 @@
     ]
   ],
   "avg_function_length": 58.18383236372547,
-  "avg_cyclomatic_complexity": 4.120315581854044
+  "avg_cyclomatic_complexity": 4.120315581854044,
+  "comment_ratio": 0.10071491640320146
 }

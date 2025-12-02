@@ -568,3 +568,7 @@ body {
   color: #F6D860;
   text-decoration: underline;
 }
+
+#about {
+  margin-top: -4rem;
+}
