@@ -713,3 +713,12 @@ body {
   justify-content: right;  /* vertically center with left column */
   padding-top: 1rem;       /* micro-adjustment */
 }
+
+.project-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;    /* ← THIS CENTERS THEM */
+  margin-bottom: 1.5rem;
+}
+
