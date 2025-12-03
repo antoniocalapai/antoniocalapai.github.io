@@ -279,8 +279,8 @@ body {
   box-shadow: var(--shadow-soft);
 
   width: 100%;
-  max-width: 900px;    /* keeps things readable on large screens */
-  margin: 0 auto;      /* centers the card */
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .card h3 {
@@ -554,7 +554,7 @@ body {
 .metric-number {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #F6D860;  /* yellow text */
+  color: #F6D860;
 }
 
 .metrics-github-note {
@@ -584,8 +584,6 @@ body {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-
-  /* 🔥 NEW: let the height adapt to the images */
   height: auto;
 }
 
@@ -596,8 +594,8 @@ body {
 
 .carousel-images img {
   width: 100%;
-  height: auto;         /* important */
-  object-fit: contain;  /* prevents stretching */
+  height: auto;
+  object-fit: contain;
   display: block;
 }
 
@@ -640,9 +638,27 @@ body {
 
 /* Left & right alignment (corrected) */
 .carousel-button.prev {
-  left: 1rem;    /* was too far left before */
+  left: 1rem;
 }
 
 .carousel-button.next {
-  right: 1rem;   /* was too far right before */
+  right: 1rem;
+}
+
+/* Keep one row, but shrink cards so all fit without scrolling */
+.skills-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;                 /* tighter spacing */
+  overflow-x: hidden;        /* remove scroll bar */
+}
+
+.skills-grid .card {
+  flex: 1 1 auto;            /* cards shrink to fit */
+  min-width: 160px;          /* narrower cards */
+  padding: 0.8rem 1rem;      /* reduced internal padding */
+}
+
+.skills-grid .card ul li {
+  margin-bottom: 0.2rem;     /* tighter list spacing */
 }
