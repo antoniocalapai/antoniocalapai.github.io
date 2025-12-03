@@ -649,16 +649,67 @@ body {
 .skills-grid {
   display: flex;
   flex-wrap: nowrap;
-  gap: 1rem;                 /* tighter spacing */
-  overflow-x: hidden;        /* remove scroll bar */
+  gap: 1rem;
+  overflow-x: hidden;
 }
 
 .skills-grid .card {
-  flex: 1 1 auto;            /* cards shrink to fit */
-  min-width: 160px;          /* narrower cards */
-  padding: 0.8rem 1rem;      /* reduced internal padding */
+  flex: 1 1 auto;
+  min-width: 160px;
+  padding: 0.8rem 1rem;
 }
 
 .skills-grid .card ul li {
-  margin-bottom: 0.2rem;     /* tighter list spacing */
+  margin-bottom: 0.2rem;
+}
+
+.language-bars .lang {
+  margin-bottom: 0.4rem;
+}
+
+.language-bars span {
+  display: inline-block;
+  width: 80px;
+  font-size: 0.9rem;
+  color: #E8ECF2;
+}
+
+.language-bars .bar {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100px;
+  height: 6px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  margin-left: 0.4rem;
+  overflow: hidden;
+}
+
+.language-bars .fill {
+  height: 100%;
+  background: #ffd44b;
+  border-radius: 4px;
+}
+
+/* Hard-center the entire contact content */
+#contact .section-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Contact grid should not exceed this width */
+.contact-grid {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+#contact .section-inner {
+  max-width: 800px;
+}
+
+.contact-extras {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;  /* vertically center with left column */
+  padding-top: 1rem;       /* micro-adjustment */
 }
