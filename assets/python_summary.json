@@ -2,6 +2,8 @@
   "python_loc": 35109,
   "python_files": 205,
   "python_functions": 615,
+  "defs_per_file": 3.0,
+  "defs_per_kloc": 17.516876014697086,
   "top_imports": [
     [
       "numpy",

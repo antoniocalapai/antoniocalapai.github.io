@@ -197,7 +197,6 @@
         <div class="section-header">
           <h2> Technical Skills </h2>
           <p class="section-lead">
-            from embedded linux to front-end interfaces, for neuroscience, machine vision, and advanced UX.
           </p>
         </div>
         <div class="grid skills-grid">
@@ -283,8 +282,8 @@
           </div>
 
           <div class="metrics-card">
-            <h4>Custom-made Definitions</h4>
-            <p id="metric-funcs" class="metric-number"></p>
+            <h4>Definitions per Python File</h4>
+            <p id="metric-defs-per-file" class="metric-number"></p>
           </div>
 
           <div class="metrics-card">
@@ -321,8 +320,9 @@
             document.getElementById("metric-comments").textContent =
               (d.comment_ratio * 100).toFixed(1) + "%";
 
-            document.getElementById("metric-funcs").textContent =
-              d.python_functions.toLocaleString();
+            // NEW: defs per Python file (already computed in JSON)
+            document.getElementById("metric-defs-per-file").textContent =
+              d.defs_per_file.toFixed(2);
           });
       </script>
     </section> <!-- end #skills -->
@@ -333,7 +333,8 @@
         <div class="section-header">
           <h2>Experience</h2>
           <p class="section-lead">
-            Building full-stack data and machine-vision systems for autonomous cognition research and scalable behavioral analytics.
+            My work focuses on building robust, end-to-end data infrastructures that integrate diverse data streams
+            and enable reproducible, large-scale analysis—supporting collaborative research on complex, data-driven systems.
           </p>
         </div>
 
