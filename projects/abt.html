@@ -13,7 +13,7 @@
 
   <p class="project-description" style="margin-bottom: 1.6rem;">
     In this project I am lead developer and coordinator of a group of engineers and data scientists
-    belonging to different research groups of the Cognitive Neuroscience Laboratory (CNL) of the
+    belonging to different research groups at the Cognitive Neuroscience Laboratory (CNL) of the
     German Primate Center. Here I designed and led the development of a stand-alone software to
     track, identify, and extract the posture of rhesus macaques in their enclosure with
     the aim of autonomously assessing animals’ welfare and behaviour 24/7 without direct interference.
@@ -26,37 +26,37 @@
   </p>
 
   <p class="project-description" style="margin-bottom: 1.6rem;">
-    High-resolution video streams are captured by up to <strong>16 Hikrobot GigE cameras</strong>,
-    connected through a dedicated network switch and synchronized via <strong>PTP</strong> or software
+    High-resolution video streams are captured by up to 16 Hikrobot GigE cameras,
+    connected through a dedicated network switch and synchronized via PTP or software
     triggering. These streams are transmitted to a distributed GPU cluster, where a
-    <strong>2D Prediction module</strong> performs real-time object detection, keypoint extraction, and
+    2D Prediction moduleperforms real-time object detection, keypoint extraction, and
     individual animal identification.
   </p>
 
   <p class="project-description" style="margin-bottom: 1.6rem;">
-    Each node in the cluster employs <strong>TensorRT-optimized CNNs</strong>, trained and fine-tuned
-    through custom modules (<em>Model Training</em> and <em>Model Optimization</em>). Every processed frame
+    Each node in the cluster employs TensorRT-optimized CNNs, trained and fine-tuned
+    through custom modules (Model Training and Model Optimization). Every processed frame
     generates structured outputs—including bounding boxes, anatomical keypoints, and identity
     labels—which are automatically logged and archived into text-based databases.
   </p>
 
   <p class="project-description" style="margin-bottom: 1.6rem;">
-    Processed outputs from the GPU cluster are transmitted to a <strong>Server computer</strong>, where
-    <em>3D Calibration</em>, <em>3D Transformation</em>, and <em>3D Localization</em> modules reconstruct
+    Processed outputs from the GPU cluster are transmitted to a Server computer, where
+    3D Calibration, 3D Transformation, and 3D Localization modules reconstruct
     absolute spatial positions from synchronized camera pairs. Calibration follows checkerboard-based
-    stereo recordings using the <strong>JARVIS protocol</strong> (jarvis-mocap.github.io), generating
+    stereo recordings using the JARVIS protocol (jarvis-mocap.github.io), generating
     intrinsic/extrinsic parameters and distortion coefficients for each camera.
   </p>
 
   <p class="project-description" style="margin-bottom: 1.6rem;">
     Transformation matrices are then computed to project all 2D coordinates into a unified world
-    reference frame, enabling accurate <strong>3D pose reconstruction</strong> and <strong>multi-animal
-    tracking</strong> across large experimental spaces. The data server manages compression, indexing,
+    reference frame, enabling accurate 3D pose reconstruction and multi-animal
+    tracking across large experimental spaces. The data server manages compression, indexing,
     and long-term storage of video and derivative datasets, ensuring reproducibility and accessibility.
   </p>
 
   <p class="project-description" style="margin-bottom: 1.6rem;">
-    Users interact with the system via the <strong>ABT graphical interface</strong> from a client computer,
+    Users interact with the system via the ABT graphical interface from a client computer,
     which integrates tools for acquisition scheduling, system monitoring, and visualization of processed
     results. The GUI also links to automated analysis modules that routinely compute behavioral readouts
     and statistical summaries directly from processed data.
@@ -64,8 +64,13 @@
 
   <p class="project-description" style="margin-bottom: 1.6rem;">
     This automated architecture is designed to allow researchers to focus on analysis and interpretation,
-    while simultaneously enhancing <strong>reproducibility</strong> and <strong>standardization</strong>
+    while simultaneously enhancing reproducibility and standardization
     across experimental setups and research questions.
+  </p>
+
+  <p class="project-description" style="margin-bottom: 1.6rem;">
+    The ABT software is planned to reach alpha state in early 2026, when it will be set as public on github
+    and thus made accessible to institutions outside the German Primate Center.
   </p>
 
   <script>initCarousel("carousel-abt")</script>

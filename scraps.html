@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mietprofil – Familie Calapai (Freiburg Region)</title>
+
+  <style>
+    :root{
+      --blue:#1f5ea8;
+      --blue-2:#2f7bc9;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --card:#ffffff;
+      --bg:#f6f8fb;
+      --tile:#f1f6ff;
+      --shadow:0 2px 10px rgba(15,23,42,.06);
+      --radius:12px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:linear-gradient(#ffffff, #ffffff 180px, var(--bg) 180px);
+    }
+
+    .page{
+      max-width: 980px;
+      margin: 28px auto 60px;
+      padding: 0 18px;
+    }
+
+    /* Header */
+    .topbar{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding: 8px 0 14px;
+      border-bottom:1px solid var(--border);
+    }
+    .title{
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: .2px;
+      font-weight: 800;
+      color: var(--blue);
+    }
+    .title small{
+      font-weight: 700;
+      color: #284b7a;
+      opacity:.9;
+    }
+    .subtitle{
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* Layout */
+    .layout{
+      display:grid;
+      grid-template-columns: 1.45fr .9fr;
+      gap: 16px;
+      margin-top: 18px;
+      align-items:start;
+    }
+    @media (max-width: 860px){
+      .layout{ grid-template-columns: 1fr; }
+    }
+
+    /* Card */
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card + .card{ margin-top: 14px; }
+
+    .card-h{
+      padding: 12px 14px;
+      font-weight: 800;
+      color: var(--blue);
+      border-bottom: 1px solid var(--border);
+      background: #fbfcff;
+    }
+    .card-b{
+      padding: 14px;
+    }
+
+    /* "Auf einen Blick" tiles */
+    .tiles{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 520px){
+      .tiles{ grid-template-columns: 1fr; }
+    }
+    .tile{
+      border: 1px solid #dbe7ff;
+      background: var(--tile);
+      border-radius: 10px;
+      padding: 12px 12px 10px;
+      text-align:center;
+      min-height: 86px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap: 6px;
+    }
+    .tile .big{
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--blue);
+      line-height:1;
+    }
+    .tile .small{
+      font-size: 13px;
+      color: #30527b;
+      line-height:1.2;
+    }
+
+    /* Icon row */
+    .icon-row{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 640px){
+      .icon-row{ grid-template-columns: repeat(2, 1fr); }
+    }
+    .icon-pill{
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 10px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 8px;
+      text-align:center;
+      background: #fff;
+      min-height: 108px;
+    }
+    .icon{
+      width: 36px;
+      height: 36px;
+      display:grid;
+      place-items:center;
+      border-radius: 9px;
+      background: #eef5ff;
+      border: 1px solid #dbe7ff;
+    }
+    .icon svg{ width: 22px; height:22px; fill: var(--blue-2); }
+    .icon-pill .lbl{
+      font-weight: 800;
+      color: #26486f;
+      font-size: 13px;
+      line-height: 1.2;
+    }
+
+    /* Reference */
+    .quote{
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 14px 14px 12px;
+      position:relative;
+    }
+    .quote:before{
+      content:"“";
+      position:absolute;
+      top:-12px;
+      left:10px;
+      font-size: 44px;
+      color: #cfe0ff;
+      font-weight: 900;
+    }
+    .quote p{
+      margin: 0 0 10px;
+      color: #334155;
+      font-style: italic;
+    }
+    .quote .by{
+      color: var(--muted);
+      font-size: 13px;
+      text-align:right;
+    }
+
+    /* Sidebar "Über uns" */
+    .profile{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .photo{
+      width:100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 10px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:#f1f5f9;
+      display:grid;
+      place-items:center;
+    }
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .checklist{
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+      padding-top: 2px;
+    }
+    .check{
+      display:grid;
+      grid-template-columns: 18px 1fr;
+      gap: 10px;
+      align-items:start;
+    }
+    .check .tick{
+      width:18px;height:18px;
+      border-radius: 4px;
+      background: #e8f1ff;
+      border:1px solid #cfe0ff;
+      display:grid;
+      place-items:center;
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 12px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .check b{ color:#1f3f66; }
+    .check span{ color:var(--muted); font-size: 13px; display:block; margin-top:2px; }
+
+    /* Documents list */
+    .doclist .item{
+      display:grid;
+      grid-template-columns: 18px 1fr;
+      gap: 10px;
+      align-items:center;
+      padding: 8px 0;
+      border-bottom:1px dashed var(--border);
+    }
+    .doclist .item:last-child{ border-bottom:0; }
+    .doclist .dot{
+      width:18px;height:18px;
+      border-radius: 4px;
+      border:1px solid #cfe0ff;
+      background:#e8f1ff;
+      display:grid;
+      place-items:center;
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 12px;
+    }
+    .doclist .name{ font-weight: 700; color:#274b74; font-size: 13px; }
+
+    /* NEW: family timeline (replaces bottom images) */
+    .timeline{
+      position:relative;
+      margin-top: 6px;
+      padding-left: 18px;
+    }
+    .timeline:before{
+      content:"";
+      position:absolute;
+      top: 2px;
+      left: 7px;
+      bottom: 2px;
+      width: 2px;
+      background: #dbe7ff;
+    }
+    .t-item{
+      position:relative;
+      padding: 10px 10px 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      margin: 10px 0;
+      box-shadow: 0 1px 6px rgba(15,23,42,.04);
+    }
+    .t-item:before{
+      content:"";
+      position:absolute;
+      left: -18px;
+      top: 18px;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--blue-2);
+      border: 3px solid #e8f1ff;
+      box-shadow: 0 0 0 1px #cfe0ff;
+    }
+    .t-item .when{
+      font-weight: 900;
+      color: var(--blue);
+      margin-bottom: 2px;
+    }
+    .t-item .what{
+      font-weight: 800;
+      color:#1f3f66;
+      margin-bottom: 4px;
+    }
+    .t-item .detail{
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    /* Small helper */
+    .note{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="title">Mietprofil – Familie Calapai <small>(Freiburg Region)</small></div>
+      <div class="subtitle">Zuverlässige, ruhige Familie sucht langfristiges Zuhause im Raum Freiburg.</div>
+    </header>
+
+    <section class="layout">
+      <!-- LEFT COLUMN -->
+      <div>
+        <article class="card">
+          <div class="card-h">Auf einen Blick</div>
+          <div class="card-b">
+            <div class="tiles">
+              <div class="tile">
+                <div class="big">5 Personen</div>
+                <div class="small">2 Erwachsene<br/>+ 3 Kinder</div>
+              </div>
+              <div class="tile">
+                <div class="big">4 Zimmer ideal</div>
+                <div class="small">3+ Zimmer<br/>möglich</div>
+              </div>
+              <div class="tile">
+                <div class="big">Freiburg &amp; Umland</div>
+                <div class="small">gute ÖPNV-<br/>Anbindung</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-h">Warum wir gute Mieter sind</div>
+          <div class="card-b">
+            <div class="icon-row">
+              <div class="icon-pill">
+                <div class="icon" aria-hidden="true">
+                  <!-- no smoking -->
+                  <svg viewBox="0 0 24 24"><path d="M2 17h14v2H2v-2zm16 0h4v2h-4v-2zm-2.2-7.2 1.4-1.4c-1-.9-1.6-2.1-1.6-3.4 0-1 .3-1.9.9-2.7l-1.5-1.1C14 2.2 13.6 3.6 13.6 5c0 1.8.8 3.5 2.2 4.8zM5.3 4 4 5.3 9.7 11H2v4h12.7l3 3 1.3-1.3L5.3 4z"/></svg>
+                </div>
+                <div class="lbl">Nichtraucher-<br/>Haushalt</div>
+              </div>
+
+              <div class="icon-pill">
+                <div class="icon" aria-hidden="true">
+                  <!-- people -->
+                  <svg viewBox="0 0 24 24"><path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3 1.3 3 3 3zM8 11c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zm0 2c-2.3 0-7 1.2-7 3.5V19h14v-2.5C15 14.2 10.3 13 8 13zm8 0c-.3 0-.7 0-1.1.1 1.4.8 2.1 1.8 2.1 3.4V19h7v-2.5C24 14.2 18.3 13 16 13z"/></svg>
+                </div>
+                <div class="lbl">Keine Partys</div>
+              </div>
+
+              <div class="icon-pill">
+                <div class="icon" aria-hidden="true">
+                  <!-- house -->
+                  <svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v9h6v-6h2v6h6v-9h3L12 3z"/></svg>
+                </div>
+                <div class="lbl">Langfristig</div>
+              </div>
+
+              <div class="icon-pill">
+                <div class="icon" aria-hidden="true">
+                  <!-- plant/building -->
+                  <svg viewBox="0 0 24 24"><path d="M7 20h10v2H7v-2zm2-18h6v16H9V2zm-5 8h4v8H4v-8zm16 4h-4v4h4v-4z"/></svg>
+                </div>
+                <div class="lbl">Pfleglich &amp;<br/>Zuverlässig</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- NEW: Timeline until moving to Freiburg in 2026 (and no bottom images) -->
+        <article class="card">
+          <div class="card-h">Timeline unserer Familie bis Freiburg (Umzug 2026)</div>
+          <div class="card-b">
+            <div class="timeline">
+              <div class="t-item">
+                <div class="when">Jetzt</div>
+                <div class="what">Profil aktiv &amp; Erstkontakt</div>
+                <div class="detail">Wir sind erreichbar, reagieren schnell und können Besichtigungen flexibel koordinieren (auch kurzfristig).</div>
+              </div>
+
+              <div class="t-item">
+                <div class="when">2025</div>
+                <div class="what">Wohnungssuche &amp; Unterlagen</div>
+                <div class="detail">Alle Standard-Unterlagen sind vorbereitet (Ausweise, Einkommensnachweise, SCHUFA, Mietschuldenfreiheitsbescheinigung).</div>
+              </div>
+
+              <div class="t-item">
+                <div class="when">Frühjahr 2026</div>
+                <div class="what">Konkrete Planung</div>
+                <div class="detail">Schule/Kita, Logistik und Übergabe sind planbar – Einzugstermin nach Absprache.</div>
+              </div>
+
+              <div class="t-item">
+                <div class="when">Sommer/Herbst 2026</div>
+                <div class="what">Umzug nach Freiburg</div>
+                <div class="detail">Langfristige Perspektive: Wir suchen ein Zuhause für mehrere Jahre in Freiburg oder gut angebundenem Umland.</div>
+              </div>
+            </div>
+
+            <div class="note">
+              Hinweis: Texte/Stationen sind bewusst allgemein gehalten – passe sie an eure echte Planung (Monat, Schulwechsel, etc.) an.
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-h">Referenz</div>
+          <div class="card-b">
+            <div class="quote">
+              <p>„Zuverlässige Mieter – Pünktliche Zahlungen, sehr gepflegte Wohnung.“</p>
+              <div class="by">— Frau Becker, ehem. Vermieterin</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <aside>
+        <article class="card">
+          <div class="card-h">Über uns</div>
+          <div class="card-b">
+            <div class="profile">
+              <div class="photo">
+                <!-- Replace src with your real image -->
+                <img src="family-photo.jpg" alt="Familienfoto" onerror="this.remove(); this.parentElement.innerHTML='<div style=&quot;color:#64748b;font-weight:700;padding:12px;text-align:center;&quot;>Familienfoto hier einfügen<br/><span style=&quot;font-weight:600;font-size:12px;color:#94a3b8&quot;>src=&quot;family-photo.jpg&quot;</span></div>';">
+              </div>
+
+              <div class="checklist">
+                <div class="check">
+                  <div class="tick">✓</div>
+                  <div>
+                    <b>Antonino</b> — Neurowissenschaftler &amp; Softwareentwickler
+                  </div>
+                </div>
+
+                <div class="check">
+                  <div class="tick">✓</div>
+                  <div>
+                    <b>Partnerin</b> — Familienmanagerin
+                  </div>
+                </div>
+
+                <div class="check">
+                  <div class="tick">✓</div>
+                  <div>
+                    <b>Drei Kinder</b>
+                    <span>— im Kita- &amp; Schulalter</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-h">Dokumente</div>
+          <div class="card-b doclist">
+            <div class="item"><div class="dot">✓</div><div class="name">Ausweis / ID</div></div>
+            <div class="item"><div class="dot">✓</div><div class="name">Einkommensnachweis</div></div>
+            <div class="item"><div class="dot">✓</div><div class="name">SCHUFA-Auskunft</div></div>
+            <div class="item"><div class="dot">✓</div><div class="name">Mietfreiheitsbescheinigung</div></div>
+          </div>
+        </article>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

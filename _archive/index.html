@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title> Dr. Antonino Calapai – Software Engineer & Neuroscientist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Dr. Antonino Calapai"
+  />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Inline styles just for the project tabs; you can move these to styles.css later -->
+  <style>
+    .projects-shell {
+      margin-top: 2rem;
+    }
+
+    .project-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tab {
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    }
+
+    .project-tab:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .project-tab.active {
+      background: #ffd44b;
+      color: #0b1726;
+      font-weight: 600;
+    }
+
+    .project-panels .project-panel {
+      display: none;
+    }
+
+    .project-panels .project-panel.active {
+      display: block;
+    }
+  </style>
+</head>
+
+  <script>
+  function initCarousel(id) {
+    const carousel = document.getElementById(id);
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.carousel-images');
+    const images = track.querySelectorAll('img');
+    let index = 0;
+
+    // --- Resize the carousel to the height of the current image ---
+    function resizeCarousel() {
+      const currentImg = images[index];
+      if (currentImg && currentImg.complete) {
+        carousel.style.height = currentImg.offsetHeight + "px";
+      } else if (currentImg) {
+        currentImg.onload = () => {
+          carousel.style.height = currentImg.offsetHeight + "px";
+        };
+      }
+    }
+
+    // --- Update slide ---
+    const update = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      resizeCarousel();
+    };
+
+    // --- Buttons ---
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+
+    if (prevBtn) {
+      prevBtn.onclick = () => {
+        index = (index - 1 + images.length) % images.length;
+        update();
+      };
+    }
+
+    if (nextBtn) {
+      nextBtn.onclick = () => {
+        index = (index + 1) % images.length;
+        update();
+      };
+    }
+
+    // --- Initial sizing ---
+    resizeCarousel();
+  }
+  </script>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-text">Dr. Antonino Calapai</span>
+      </div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="hero-kicker"></p>
+          <h1>Software Engineer <br>and Neuroscientist.</h1>
+          <p class="hero-subtitle">
+            I specialize in autonomous, end-to-end software systems, with a focus on data-engineering workflows,
+            machine-vision pipelines, and reproducible computational methods.
+            My work aims to bridge experimental requirements with robust, maintainable software infrastructures.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Portfolio</a>
+            <a class="btn btn-secondary" href="#contact">Contact me</a>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-card">
+            <p class="meta-label">Location</p>
+            <p class="meta-value">Göttingen, Germany <br> (from 2026: Freiburg im Breisgau)</p>
+          </div>
+          <div class="meta-card">
+            <p class="meta-label">Current role</p>
+            <p class="meta-value">Lead Software Engineer · German Primate Center</p>
+          </div>
+<!--          <div class="meta-card">-->
+<!--            <p class="meta-label">Focus</p>-->
+<!--            <p class="meta-value">Data engineering · Scientific Programming · Machine Vision Pipelines · Cognitive enrichment</p>-->
+<!--          </div>-->
+          <div class="meta-card">
+            <p class="meta-label">Open to roles in</p>
+            <p class="meta-value">
+              Software and/or data engineering · <br> Scientific programming · Machine learning
+            </p>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container section-inner">
+        <div class="two-column">
+          <div>
+            <p>
+              I was born in Sicily and trained as a neuroscientist and neuropsychologist across Italy and Germany.
+              Over the last decade I have worked at the intersection of cognitive neuroscience, machine vision, and
+              software engineering, focusing on advancing knowledge and research methods, efficiently and ethically.
+            </p>
+            <p>
+              During my PhD in Systems Neuroscience at the University of Göttingen, I worked on the electrophysiology
+              of the macaque visual cortex and on the psychophysics of spatial attention. Throughout my PostDocs
+              I built autonomous systems to turn cognitive training of non-human primates into gamified assessment and enrichment
+              that allowed more efficient high-throughput research while enhancing ethical standards.
+            </p>
+          </div>
+          <div>
+            <p>
+              Today I lead the development of autonomous behavioral tracking and enrichment platforms at the
+              Primate Cognition and Behavior facility at the German Primate Center.
+            </p>
+            <p>
+              I enjoy designing systems end-to-end: from CAD models and embedded hardware to data pipelines and user-facing tools for scientists, vets, and technicians.
+              My work has led to open-access publications, new research infrastructure, and concrete improvements in animal welfare.
+            </p>
+            <p>
+              Outside of work I am a father of three, an amateur musician, and an aspiring game designer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills + Metrics -->
+    <section id="skills" class="section section-alt">
+      <div class="container section-inner">
+        <div class="section-header">
+          <h2> Technical Skills </h2>
+          <p class="section-lead">
+          </p>
+        </div>
+        <div class="grid skills-grid">
+          <div class="card">
+            <h3>Programming</h3>
+            <ul>
+              <li>Python</li>
+              <li>Matlab</li>
+              <li>Bash</li>
+              <li>C# / C++</li>
+              <li>HTML & CSS</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Machine Vision</h3>
+            <ul>
+              <li>OpenCV</li>
+              <li>TensorFlow</li>
+              <li>CNNs, Poses, Identities</li>
+              <li>Markerless 3D tracking</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Data & Software</h3>
+            <ul>
+              <li>End-to-end workflows</li>
+              <li>GitHub / CI-CD</li>
+              <li>Docker & Ansible</li>
+              <li>Distributed GPU clusters</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Statistics</h3>
+            <ul>
+              <li>Frequentist </li>
+              <li>GLMs & GAMMs</li>
+              <li>Bayesian </li>
+              <li>Time-series </li>
+              <li>Reverse correlation</li>
+              <li>R / SPSS</li>
+
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Hardware</h3>
+            <ul>
+              <li>Nvidia Jetson</li>
+              <li>Raspberry Pi</li>
+              <li>PCB basics</li>
+              <li>Microcontrollers</li>
+              <li>CAD & 3D printing</li>
+              <li>Touchscreens</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Code Metrics: wordcloud -->
+      <div class="container section-inner">
+        <div class="metrics-card"
+             style="
+               background: rgba(255,255,255,0.04);
+               border-radius: 18px;
+               padding: 2rem;
+               text-align: center;
+               width: 100%;
+             ">
+
+          <img src="assets/wordcloud.jpg"
+               alt="Python import wordcloud"
+               style="
+                 width: 95%;
+                 max-width: 1100px;
+                 border-radius: 10px;
+                 display: block;
+                 margin: 0 auto;
+               ">
+        </div>
+      </div>
+
+      <!-- Wordcloud and stats -->
+      <div class="metrics-infographic container section-inner" style="margin-top: 2rem;">
+
+        <div class="metrics-cards">
+          <div class="metrics-card">
+            <h4>Total Lines of Code</h4>
+            <p id="metric-loc" class="metric-number"></p>
+          </div>
+
+          <div class="metrics-card">
+            <h4>Cyclomatic Complexity</h4>
+            <p id="metric-cc" class="metric-number"></p>
+          </div>
+
+          <div class="metrics-card">
+            <h4>Definitions <br>per Script</h4>
+            <p id="metric-defs-per-file" class="metric-number"></p>
+          </div>
+
+          <div class="metrics-card">
+            <h4>Comments Percentage</h4>
+            <p id="metric-comments" class="metric-number"></p>
+          </div>
+        </div>
+
+        <p class="metrics-caption" style="
+          text-align:center;
+          color:#8FA3B8;
+          margin-top:0rem;
+          font-size:0.9rem;
+          max-width:700px;
+          margin-left:auto;
+          margin-right:auto;">
+          These <span style="color:#ffd44b;">Python-only metrics</span> summarize the size, complexity,
+          originality, and readability of my codebase. They are based on both curated and non-curated projects available
+          on my <a href="https://github.com/antoniocalapai" target="_blank" style="color:#ffd44b;">GitHub profile</a>.
+        </p>
+
+      </div>
+
+      <script>
+        fetch("assets/python_summary.json")
+          .then(r => r.json())
+          .then(d => {
+            document.getElementById("metric-loc").textContent =
+              d.python_loc.toLocaleString();
+
+            document.getElementById("metric-cc").textContent =
+              d.avg_cyclomatic_complexity.toFixed(2);
+
+            document.getElementById("metric-comments").textContent =
+              (d.comment_ratio * 100).toFixed(1) + "%";
+
+            // NEW: defs per Python file (already computed in JSON)
+            document.getElementById("metric-defs-per-file").textContent =
+              d.defs_per_file.toFixed(2);
+          });
+      </script>
+    </section> <!-- end #skills -->
+
+    <!-- Experience -->
+    <section id="experience" class="section">
+      <div class="container section-inner">
+        <div class="section-header">
+          <h2>Experience</h2>
+          <p class="section-lead">
+            I work at the intersection of science and engineering, building the data infrastructures, workflows,
+            and computational tools that enable researchers to model and analyze complex systems at scale.
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <!-- Lead Machine Vision / Data & Software Engineer -->
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-role">Lead Data & Machine Vision Engineer</span>
+              <span class="timeline-time">2023 – present</span>
+            </div>
+            <h3>German Primate Center · Göttingen, Germany</h3>
+            <p>
+              Leading the development of <strong>full-stack machine-vision platforms</strong> for
+              high-volume, continuous behavioral tracking of primates, including <strong>3D pose estimation</strong>,
+              <strong>ID recognition</strong>, GPU-cluster orchestration, and structured data pipelines.
+              Coordinating a team of engineers and scientists to deliver scalable, production-level systems
+              used across multiple research groups.
+            </p>
+          </article>
+
+          <!-- Postdoc DPZ -->
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-role">Postdoctoral Researcher</span>
+              <span class="timeline-time">2020 – 2022</span>
+            </div>
+            <h3>Cognitive Neuroscience Laboratory · German Primate Center</h3>
+            <p>
+              Developed <strong>CNN-based detection and identification systems</strong> (>95% accuracy) enabling
+              autonomous training and assessment of macaques. Designed gamified behavioral tasks increasing
+              data throughput by ~30%, and integrated behavioral, neural, and eye-movement data into
+              reproducible pipelines. Collaborated closely with veterinarians, caretakers, and technicians
+              to translate research needs into deployed technical systems.
+            </p>
+          </article>
+
+          <!-- Junior Postdoc IAN -->
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-role">Junior Postdoctoral Researcher</span>
+              <span class="timeline-time">2016 – 2019</span>
+            </div>
+            <h3>Institute for Auditory Neuroscience · University Medical Center Göttingen</h3>
+            <p>
+              Designed and deployed <strong>autonomous auditory cognition and psychophysics systems</strong> for
+              common marmosets, scaling training from 2 to 14 animals per day.
+              Pioneered <strong>group-based cognitive training and enrichment</strong> protocols for rhesus and long-tailed
+              macaques, reducing the need for animal isolation and improving welfare standards.
+              Built multimodal acquisition pipelines for long-term studies.
+            </p>
+          </article>
+
+          <!-- PhD -->
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-role">PhD Researcher in Systems Neuroscience</span>
+              <span class="timeline-time">2011 – 2016</span>
+            </div>
+            <h3>University of Göttingen · Germany</h3>
+            <p>
+              Conducted single-neuron electrophysiology in macaque brain area MST, mapping multidimensional
+              motion selectivity. Investigated human microsaccadic eye movements in visual attention and
+              developed <strong>early autonomous touchscreen-based cognitive devices</strong> for captive monkeys—now
+              foundational for multiple research platforms at the institute.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects (tabbed) -->
+    <section id="projects" class="section section-alt">
+    <div class="container section-inner">
+
+    <div class="section-header">
+      <h2>Portfolio</h2>
+      <p class="section-lead">
+        A selection of projects across neuroscience, machine vision, and autonomous systems.
+      </p>
+    </div>
+
+    <div class="projects-shell">
+
+      <!-- Tabs -->
+      <div class="project-tabs">
+        <button class="project-tab active" data-file="projects/abt.html">Tracking & ID Monkeys</button>
+        <button class="project-tab" data-file="projects/xbi.html">Touchscreen Devices</button>
+        <button class="project-tab" data-file="projects/neuro.html">Neuronal Recordings </button>
+        <button class="project-tab" data-file="projects/mvi.html">Custom Neural Networks</button>
+        <button class="project-tab" data-file="projects/gamify.html">Gamified Psychophysics</button>
+        <button class="project-tab" data-file="projects/dyadic.html">Continuous Psychophysics</button>
+        <button class="project-tab" data-file="projects/aco.html">Acoustic Cognition</button>
+        <button class="project-tab" data-file="projects/mci.html">Monkeys Gaming </button>
+      </div>
+
+      <!-- Panels -->
+      <div class="project-panels">
+        <article class="card project-panel active"></article>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabs = document.querySelectorAll(".project-tab");
+      const panelContainer = document.querySelector(".project-panels");
+
+      // Load default tab
+      const first = document.querySelector(".project-tab.active");
+      if (first) loadFile(first.dataset.file);
+
+      tabs.forEach(btn => {
+        btn.addEventListener("click", () => {
+          tabs.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          loadFile(btn.dataset.file);
+        });
+      });
+
+      function loadFile(file) {
+        fetch(file)
+          .then(r => r.text())
+          .then(html => {
+            panelContainer.innerHTML = html;
+            panelContainer.querySelectorAll(".carousel").forEach(c => initCarousel(c.id));
+          });
+      }
+    });
+  </script>
+
+</section>
+
+    <!-- Contact -->
+    <section id="contact" class="section section-alt">
+      <div class="container section-inner">
+
+        <!-- Two-column grid -->
+        <div class="contact-grid">
+
+          <!-- LEFT: Contact info -->
+          <div>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a href="mailto:antonio.calapai@gmail.com">antonio.calapai@gmail.com</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/antonino-calapai-6b8338266" target="_blank" rel="noopener">antonino-calapai-6b8338266</a></li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/antoniocalapai" target="_blank" rel="noopener">github.com/antoniocalapai</a></li>
+
+            </ul>
+          </div>
+
+          <!-- RIGHT: Languages -->
+          <div class="contact-extras">
+
+            <div class="language-bars">
+              <div class="lang">
+                <span>Italian</span>
+                <div class="bar"><div class="fill" style="width: 100%;"></div></div>
+              </div>
+
+              <div class="lang">
+                <span>English</span>
+                <div class="bar"><div class="fill" style="width: 91%;"></div></div>
+              </div>
+
+              <div class="lang">
+                <span>German</span>
+                <div class="bar"><div class="fill" style="width: 55%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-bottom-pills">
+          <ul class="pill-list horizontal-pills">
+            <li>Married and father of three</li>
+            <li>Amateur musician and producer</li>
+            <li>Aspiring game designer</li>
+            <li>Trees & Ants lover</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Antonino Calapai</p>
+      <p>Built with plain HTML &amp; CSS · Hosted on GitHub Pages</p>
+    </div>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>
